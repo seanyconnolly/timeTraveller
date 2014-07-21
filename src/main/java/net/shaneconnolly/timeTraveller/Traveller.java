@@ -46,11 +46,10 @@ public class Traveller extends Utils {
         hourOfDay = calendar.get(Calendar.HOUR_OF_DAY); // 24 hour clock
         minute = calendar.get(Calendar.MINUTE);
 
-
         newMonth = String.format("%02d", month);
-        p(month);
         String dateString = String.format("%s%s%s%s%s", newMonth, dayOfMonth, hourOfDay, minute, year);
 
+        p("       mm-dd-mm-yyyy");
         p("now is " + dateString);
         return dateString;
     }
