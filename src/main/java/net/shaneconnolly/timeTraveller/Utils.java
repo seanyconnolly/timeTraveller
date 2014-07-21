@@ -1,5 +1,8 @@
 package net.shaneconnolly.timeTraveller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
  * Created by shconnolly on 7/20/14.
  */
@@ -22,5 +25,12 @@ public class Utils {
         }
     }
 
+    public static void getHostname() {
+        try {
+            Utils.p("on " + InetAddress.getLocalHost().getHostName());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

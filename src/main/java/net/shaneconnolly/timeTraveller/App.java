@@ -1,46 +1,28 @@
 package net.shaneconnolly.timeTraveller;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Calendar;
 
 /**
  * Hello world!
  */
-public class App {
-
-    private static int today;
+public class App extends Utils {
 
     public static void main(String[] args) {
 
-        setToday();
+        p("running as " + System.getProperty("user.name"));
+        getHostname();
 
-        Utils.p("running as " + System.getProperty("user.name"));
-        try {
-            Utils.p("on " + InetAddress.getLocalHost().getHostName());
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
-
-        Utils.p(today);
+        p(Traveller.getToday());
 
         Traveller.jumpDay("25");
 
-        Utils.p("after jump");
-        Utils.p(Traveller.getTimeInJava().get(Calendar.DAY_OF_MONTH));
-        Utils.p(Traveller.getTimeInJava().get(Calendar.DAY_OF_WEEK));
+        p("after jump");
+        p(Traveller.getNewCalendar().get(Calendar.DAY_OF_MONTH));
 
-        resetDate();
+        sleep(10);
+        Traveller.resetDate();
 
     }
 
-    private static void resetDate() {
-        Traveller.jumpDay(Integer.toString(today));
-        Utils.p("reset day to " + today);
-    }
 
-    private static void setToday() {
-        today = Traveller.getTimeInJava().get(Calendar.DAY_OF_MONTH);
-        Utils.p("today is " + today);
-    }
 }
